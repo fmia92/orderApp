@@ -48,6 +48,5 @@ export class OrdersService {
 
   getToken() {
     console.log(this.token)
-    console.log(typeof(this.token))
   }
 }

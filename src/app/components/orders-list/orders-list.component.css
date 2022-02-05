@@ -1,0 +1,69 @@
+.filters {
+    float: left;
+}
+.orders {
+    float: right;
+}
+.orders-table  {
+    padding: 1rem;
+}
+
+.orders-table th, td {
+    padding: 0.5rem;
+    text-align: left;
+    table-layout: auto;
+}
+.referencia img {
+    width: 15%;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+.comentario {
+    color: #345995;
+}
+
+.warning {
+    color: #EAC435;
+}
+
+.pendiente {
+    background-color: #345995;
+}
+
+.entregada {
+    background-color: green;
+}
+
+.desconsolidada, .incidencia {
+    background-color: tomato;
+}
+
+.recogiendo {
+    background-color: orange;
+}
+
+.mesa {
+    background-color: #2F97C1;
+}
+.ruta {
+    background-color: #53FF45;
+}
+
+.urgente {
+    background-color: #D1462F;
+}
+
+.client-data {
+    text-align: end;
+}
+
+.badge {
+    color: white;
+}
+
+.paginacion-container {
+    display: flex;
+    justify-content: space-between;
+}

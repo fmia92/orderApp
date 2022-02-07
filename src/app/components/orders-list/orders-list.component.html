@@ -1,131 +1,148 @@
-<div class="col-md-3 filters">
-  <label for="cliente">Cliente</label>
-  <div class="input-group mb-3">
-    <input type="text" name="cliente" id="cliente" class="form-control" placeholder="Search..."
-      [(ngModel)]="filterTerm1">
-    <button class="input-group-text" id="basic-addon1" (click)="handleClearCliente()"><i
-        class="fas fa-times"></i></button>
+<div class="app-container">
+  <div class="col-md-3 filters">
+    <label for="cliente">Cliente</label>
+    <div class="input-group mb-3">
+      <input type="text" name="cliente" id="cliente" class="form-control" placeholder="Search..."
+        [(ngModel)]="filterTerm1">
+      <button class="input-group-text" id="basic-addon1" (click)="handleClearCliente()"><i
+          class="fas fa-times"></i></button>
+    </div>
+    <label for="referencia">Referencia</label>
+    <div class="input-group mb-3">
+      <input type="text" name="referencia" id="referencia" class="form-control" placeholder="Search..."
+        [(ngModel)]="filterTerm2">
+      <button class="input-group-text" id="basic-addon1" (click)="handleClearReferencia()"><i
+          class="fas fa-times"></i></button>
+    </div>
+    <label for="usuario">Usuario</label>
+    <div class="input-group mb-3">
+      <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Search..."
+        [(ngModel)]="filterTerm3">
+      <button class="input-group-text" id="basic-addon1" (click)="handleClearUsuario()"><i
+          class="fas fa-times"></i></button>
+    </div>
+    <label for="fecha">Fecha</label>
+    <div class="input-group mb-3">
+      <input type="date" name="fecha" id="fecha" class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="filterTerm4"
+        patterns="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+      <button class="input-group-text" id="basic-addon1" (click)="handleClearFecha()"><i
+          class="fas fa-times"></i></button>
+
+    </div>
+    <label for="tipo">Tipo</label>
+    <div class="input-group mb-3">
+      <select [(ngModel)]="filterTerm5" name="tipo" id="tipo" class="form-control" value="Todos">
+        <option value="" ngValue="Todos">Todos</option>
+        <option *ngFor="let tipo of tipos; let i = index" [value]="tipo">{{tipo}}</option>
+      </select>
+      <button class="input-group-text" id="basic-addon1" (click)="handleClearTipo()"><i
+          class="fas fa-times"></i></button>
+    </div>
+    <label for="estado">Estado</label>
+    <div class="input-group mb-3">
+      <select [(ngModel)]="filterTerm6" name="estado" id="estado" class="form-control">
+        <option value="">Todos</option>
+        <option *ngFor="let estado of estados" [value]="estado">{{estado}}</option>
+      </select>
+      <button class="input-group-text" id="basic-addon1" (click)="handleClearEstado()"><i
+          class="fas fa-times"></i></button>
+    </div>
+    <!-- <div class="input-group">
+    <input class="form-control" placeholder="yyyy-mm-dd"
+           name="dp" [(ngModel)]="filterTerm4" ngbDatepicker #d="ngbDatepicker">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+    </div>
+  </div> -->
+
+
+    <button type="button" class="btn btn-outline-danger mr-2" placement="top" (click)="handleClearAll()">
+      Borrar Filtros
+    </button>
   </div>
-  <label for="referencia">Referencia</label>
-  <div class="input-group mb-3">
-    <input type="text" name="referencia" id="referencia" class="form-control" placeholder="Search..."
-      [(ngModel)]="filterTerm2">
-    <button class="input-group-text" id="basic-addon1" (click)="handleClearReferencia()"><i
-        class="fas fa-times"></i></button>
-  </div>
-  <label for="usuario">Usuario</label>
-  <div class="input-group mb-3">
-    <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Search..."
-      [(ngModel)]="filterTerm3">
-    <button class="input-group-text" id="basic-addon1" (click)="handleClearUsuario()"><i
-        class="fas fa-times"></i></button>
-  </div>
-  <label for="fecha">Fecha</label>
-  <div class="input-group mb-3">
-    <input type="date" name="fecha" id="fecha" class="form-control" placeholder="yyyy-mm-dd" 
-    [(ngModel)]="filterTerm4" patterns="[0-9]{4}-[0-9]{2}-[0-9]{2}">
-    <button class="input-group-text" id="basic-addon1" (click)="handleClearFecha()"><i
-        class="fas fa-times"></i></button>
-      
-  </div>
-  <label for="tipo">Tipo</label>
-  <div class="input-group mb-3">
-    <select [(ngModel)]="filterTerm5" name="tipo" id="tipo" class="form-control">
-      <option value="">Todos</option>
-      <option *ngFor="let tipo of tipos" [value]="tipo">{{tipo}}</option>
-    </select>
-    <button class="input-group-text" id="basic-addon1" (click)="handleClearTipo()"><i class="fas fa-times"></i></button>
-  </div>
-  <label for="estado">Estado</label>
-  <div class="input-group mb-3">
-    <select [(ngModel)]="filterTerm6" name="estado" id="estado" class="form-control">
-      <option value="">Todos</option>
-      <option *ngFor="let estado of estados" [value]="estado">{{estado}}</option>
-    </select>
-    <button class="input-group-text" id="basic-addon1" (click)="handleClearEstado()"><i
-        class="fas fa-times"></i></button>
-  </div>
-  <button type="button" class="btn btn-outline-danger mr-2" placement="top" (click)="handleClearAll()">
-    Borrar Filtros
-  </button>
-</div>
-<div class="col-md-9 orders">
-  <table class="order-table table">
-    <thead>
-      <tr>
-        <th class="product">PRODUCTO</th>
-        <th></th>
-        <th class="quantity">Q.</th>
-        <th class="status">ESTADO</th>
-        <th class="type">TIPO</th>
-        <th class="date">FECHA</th>
-        <th class="client-id"></th>
-        <th class="client">CLIENTE</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orderList 
+  <div class="clearfix"></div>
+
+  <div class="col-md-9 orders">
+    <table class="order-table table">
+      <thead>
+        <tr>
+          <th class="product">PRODUCTO</th>
+          <th></th>
+          <th class="quantity">Q.</th>
+          <th class="status">ESTADO</th>
+          <th class="type">TIPO</th>
+          <th class="date">FECHA</th>
+          <th class="client-id"></th>
+          <th class="client">CLIENTE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orderList 
       | filter:filterTerm1 | filter:filterTerm2 | filter:filterTerm3 | filter:filterTerm4 
       | filter:filterTerm5 | filter:filterTerm6 | slice: (page-1) * pageSize : page * pageSize ; let i = index"
-        [ngSwitch]="order.estado">
-        <td class="referencia">
-          <img src="{{ order.logo }}" />
-          {{order.referencia}}
-        </td>
-        <td *ngIf="order.observacion; else warning">
-          <!--<fa-icon [icon]="faInfoCircle" class="comentario"></fa-icon> -->
-          <i type="button" class="fa fa-exclamation-circle warning" placement="bottom" [ngbPopover]="popTemplate"></i>
-          <ng-template #popTemplate>
-            <p><b>Obs. linea:</b> {{order.observacion}}</p>
-            <p><b>Obs. pedido:</b></p>
-            <p><b>Obs. linea:</b> {{order.usuario}}</p>
-          </ng-template>
-        </td>
-        <ng-template #warning>
-          <td>
-            <!--<fa-icon [icon]="faWarning" class="warning"></fa-icon> -->
-            <i class="fa fa-info-circle comentario" type="button" placement="bottom" [ngbPopover]="popTemplate"></i>
+          [ngSwitch]="order.estado">
+          <td class="referencia">
+            <img src="{{ order.logo }}" />
+            {{order.referencia}}
+          </td>
+          <td *ngIf="order.observacion; else warning">
+            <!--<fa-icon [icon]="faInfoCircle" class="comentario"></fa-icon> -->
+            <i type="button" class="fa fa-exclamation-circle warning" placement="bottom" [ngbPopover]="popTemplate"
+              popoverTitle="Popover on top"></i>
             <ng-template #popTemplate>
               <p><b>Obs. linea:</b> {{order.observacion}}</p>
               <p><b>Obs. pedido:</b></p>
               <p><b>Obs. linea:</b> {{order.usuario}}</p>
             </ng-template>
           </td>
-        </ng-template>
-        <td>x{{order.cantidad}}</td>
-        <td *ngSwitchCase="'Entregada'">
-          <span class="entregada badge badge-pill">{{order.estado}}</span>
-        </td>
-        <td *ngSwitchCase="'Desconsolidada'">
-          <span class="desconsolidada badge badge-pill">{{order.estado}}</span>
-        </td>
-        <td *ngSwitchCase="'Incidencia'">
-          <span class="incidencia badge badge-pill">{{order.estado}}</span>
-        </td>
-        <td *ngSwitchCase="'Recogiendo'">
-          <span class="recogiendo badge badge-pill">{{order.estado}}</span>
-        </td>
-        <td *ngSwitchDefault>
-          <span class="pendiente badge badge-pill">{{order.estado}}</span>
-        </td>
-        <td *ngIf="order.tipo == 'Mesa'">
-          <span class="mesa badge badge-pill">{{order.tipo}}</span>
-        </td>
-        <td *ngIf="order.tipo == 'Ruta'">
-          <span class="ruta badge badge-pill">{{order.tipo}}</span>
-        </td>
-        <td *ngIf="order.tipo == 'Urgente'">
-          <span class="urgente badge badge-pill">{{order.tipo}}</span>
-        </td>
-        <td>{{order.fecha | date:'HH:mm dd MMM yyyy'}}</td>
-        <td class="client-data">{{order.codigo_cliente}} </td>
-        <td><b>{{order.alias_cliente}}</b></td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="paginacion-container">
+          <ng-template #warning>
+            <td>
+              <!--<fa-icon [icon]="faWarning" class="warning"></fa-icon> -->
+              <i class="fa fa-info-circle comentario" type="button" placement="bottom" [ngbPopover]="popTemplate"
+                popoverTitle="Popover on top"></i>
+              <ng-template #popTemplate>
+                <p><b>Obs. linea:</b> {{order.observacion}}</p>
+                <p><b>Obs. pedido:</b></p>
+                <p><b>Obs. linea:</b> {{order.usuario}}</p>
+              </ng-template>
+            </td>
+          </ng-template>
+          <td>x{{order.cantidad}}</td>
+          <td *ngSwitchCase="'Entregada'">
+            <span class="entregada badge badge-pill">{{order.estado}}</span>
+          </td>
+          <td *ngSwitchCase="'Desconsolidada'">
+            <span class="desconsolidada badge badge-pill">{{order.estado}}</span>
+          </td>
+          <td *ngSwitchCase="'Incidencia'">
+            <span class="incidencia badge badge-pill">{{order.estado}}</span>
+          </td>
+          <td *ngSwitchCase="'Recogiendo'">
+            <span class="recogiendo badge badge-pill">{{order.estado}}</span>
+          </td>
+          <td *ngSwitchDefault>
+            <span class="pendiente badge badge-pill">{{order.estado}}</span>
+          </td>
+          <td *ngIf="order.tipo == 'Mesa'">
+            <span class="mesa badge badge-pill">{{order.tipo}}</span>
+          </td>
+          <td *ngIf="order.tipo == 'Ruta'">
+            <span class="ruta badge badge-pill">{{order.tipo}}</span>
+          </td>
+          <td *ngIf="order.tipo == 'Urgente'">
+            <span class="urgente badge badge-pill">{{order.tipo}}</span>
+          </td>
+          <td>{{order.fecha | date:'HH:mm dd MMM yyyy'}}</td>
+          <td class="client-data">{{order.codigo_cliente}} </td>
+          <td><b>{{order.alias_cliente}}</b></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="paginacion-container">
       <p>LÍNEAS: <b>{{orderList.length}}</b></p>
-    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="orderList.length" [boundaryLinks]="true" class="paginacion">
-    </ngb-pagination>
+      <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="orderList.length" class="paginacion"
+        [boundaryLinks]="true">
+      </ngb-pagination>
+    </div>
   </div>
 </div>

@@ -4,10 +4,6 @@ html, body {
     box-sizing: border-box;
 }
 
-.app-container {
-    padding: 1rem;
-}
-
 .logo {
     width: 100%;
     padding: 1rem;

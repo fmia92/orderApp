@@ -10,8 +10,6 @@ import { OrdersService } from 'src/app/services/orders.service';
 })
 export class OrdersListComponent implements OnInit {
 
-  isCollapsed = true;
-
   filterTerm1: string;
   filterTerm2: string;
   filterTerm3: string;
@@ -35,7 +33,7 @@ export class OrdersListComponent implements OnInit {
     this.ordersService.getOrders().subscribe((response => {
      
       this.orderList = response["data"]
-      console.log(this.orderList)
+      //console.log(this.orderList)
     }))
 
     this.ordersService.getTipos().subscribe( response => {
@@ -44,10 +42,9 @@ export class OrdersListComponent implements OnInit {
 
     this.ordersService.getEstados().subscribe( response => {
       this.estados = response["data"]
-      console.log(this.estados)
     })
 
-    this.ordersService.getToken()
+    //this.ordersService.getToken()
   }
   handleClearCliente(){
     this.filterTerm1 = ""

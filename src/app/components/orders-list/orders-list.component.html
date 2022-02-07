@@ -72,32 +72,24 @@
         </td>
         <td *ngIf="order.observacion; else warning">
           <!--<fa-icon [icon]="faInfoCircle" class="comentario"></fa-icon> -->
-          <i class="fa fa-exclamation-circle warning" type="button" (click)="collapse.toggle()" 
-          [attr.aria-expanded]="!isCollapsed" aria-controls="true"></i>
-          <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-            <div class="card">
-              <div class="card-body">
-                <p><b>Obs. linea: </b>{{order.observacion}}</p>
-                <p><b>Obs. Pedido: </b></p>
-                <p><b>Pedido por: </b>{{order.usuario}}</p>
-              </div>
-            </div>
-          </div>
+          <i type="button" class="fa fa-exclamation-circle warning" placement="bottom" [ngbPopover]="popTemplate"
+            popoverTitle="Popover on top"></i>
+          <ng-template #popTemplate>
+            <p><b>Obs. linea:</b> {{order.observacion}}</p>
+            <p><b>Obs. pedido:</b></p>
+            <p><b>Obs. linea:</b> {{order.usuario}}</p>
+          </ng-template>
         </td>
         <ng-template #warning>
           <td>
             <!--<fa-icon [icon]="faWarning" class="warning"></fa-icon> -->
-            <i class="fa fa-info-circle comentario" type="button" (click)="collapse2.toggle()" 
-            [attr.aria-expanded]="!isCollapsed" aria-controls="true"></i>
-            <div #collapse2="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-                <div class="card">
-                  <div class="card-body">
-                    <p><b>Obs. linea: </b>{{order.observacion}}</p>
-                    <p><b>Obs. Pedido: </b></p>
-                    <p><b>Pedido por: </b>{{order.usuario}}</p>
-                  </div>
-                </div>
-              </div>
+            <i class="fa fa-info-circle comentario" type="button" placement="bottom" [ngbPopover]="popTemplate"
+              popoverTitle="Popover on top"></i>
+            <ng-template #popTemplate>
+              <p><b>Obs. linea:</b> {{order.observacion}}</p>
+              <p><b>Obs. pedido:</b></p>
+              <p><b>Obs. linea:</b> {{order.usuario}}</p>
+            </ng-template>
           </td>
         </ng-template>
         <td>x{{order.cantidad}}</td>

@@ -67,3 +67,12 @@ tr:nth-child(even) {
     display: flex;
     justify-content: space-between;
 }
+
+.clearfix {
+    clear: both;
+}
+
+.app-container {
+    padding: 1rem;
+    display: flex;
+}

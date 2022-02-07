@@ -125,7 +125,7 @@
   </table>
   <div class="paginacion-container">
       <p>LÍNEAS: <b>{{orderList.length}}</b></p>
-    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="orderList.length" class="paginacion">
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="orderList.length" [boundaryLinks]="true" class="paginacion">
     </ngb-pagination>
   </div>
 </div>
